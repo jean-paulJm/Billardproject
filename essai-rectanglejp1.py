@@ -12,31 +12,17 @@ import math
 import matplotlib.pyplot as plt
 from math import *
 from numpy import *
-<<<<<<< HEAD
-
-
-#def listetri(Liste3,Liste2):
-#    Liste3.sort
-#    print(Liste2[-1][0])
-#    if(Liste2[-1][0]<Liste3[0][0]):
-#        Liste3.reverse
-#    return Liste3
-
-
-
-=======
->>>>>>> de9272efc01fa3716bcd78c4a2bed42209d42979
 mur = ["bas","droit","haut","gauche"]
 i = 0 # indice de la liste mur
 j = 0 # indice boucle
 mur_reference = mur[i]
 L=float(input("Entrez la longueur L souhaitée de votre rectangle(axe des abcisses): "))
 l=float(input("Entrez la largeur l souhaitée de votre rectangle(axe des ordonnées): "))
-longueur=int(input("De combien voulez-vous diviser le rectangle sur la longueur?: "))
-largeur=int(input("De combien voulez-vous diviser le rectangle sur la largeur?: "))
-n0=float(L/longueur)    #division de la Longueur L par ce que l'on veut diviser long, il s'agit de la longueur de nos petits rectangles
+long=float(input("De combien voulez-vous diviser le rectangle sur la longueur?: "))
+larg=float(input("De combien voulez-vous diviser le rectangle sur la largeur?: "))
+n0=float(L/long)    #division de la Longueur L par ce que l'on veut diviser long, il s'agit de la largeur de nos petits rectangles
 X=n0
-n1=float(l/largeur)    #division de la largeur par larg, largeur de nos petits rectangles
+n1=float(l/larg)    #division de la largeur par larg, largeur de nos petits rectangles
 Y=n1
 angle = float(input("Entrez l'angle de reference (entre 0 et pi): "))
 x=-1.0
@@ -44,11 +30,6 @@ while x<0.0 or x>L:
     x = float(input("Entrez la coordonnee de reference(entre 0.0 et la longueur L ): "))
 rebond = int(input("Entrez le nombre de rebonds: "))
 Liste = [[angle,x, mur_reference]]
-<<<<<<< HEAD
-Liste2 = [0,x]
-=======
-Liste2 = [[x,0]]
->>>>>>> de9272efc01fa3716bcd78c4a2bed42209d42979
 Graphiquex = [x]
 Graphiquey = [i]
 x1e=x
@@ -146,10 +127,6 @@ for j in range(rebond - 1):
     Liste = Liste + [[angle, x, mur_reference]]
     X0=0
     Y0=0
-<<<<<<< HEAD
-    Liste3 = []
-=======
->>>>>>> de9272efc01fa3716bcd78c4a2bed42209d42979
     while X0<xdeb:
             X0+=n0
     while Y0<ydeb:
@@ -157,59 +134,17 @@ for j in range(rebond - 1):
     while X0<=graphx:
             A=matrix([[coefdir,-1],[1,0]])
             B=matrix([[-ordor],[X0]])
-<<<<<<< HEAD
             solution=linalg.solve(A,B)
             X0=X0+n0
-            Liste2 = Liste2 + [[solution]]
-            #Liste3 = Liste3 + [solution]
-            #print(solution)
+            print(solution)
     while Y0<=graphy:
             A=matrix([[coefdir,-1],[0,1]])
             B=matrix([[-ordor],[Y0]])
             solution=linalg.solve(A,B)
             Y0=Y0+n1
-            Liste2 = Liste2 + [[solution]]
-            #Liste3 = Liste3 + [solution]
-            #print(solution)
-    #Liste3 = listetri(Liste3,Liste2)
-    #Liste2 = Liste2 + Liste3
-    
-print(Liste2)
-print(Liste)
-=======
-            solution1=linalg.solve(A,B)
-            X0=X0+n0
-            #print(solution1)
-    while Y0<=graphy:
-            A=matrix([[coefdir,-1],[0,1]])
-            B=matrix([[-ordor],[Y0]])
-            solution2=linalg.solve(A,B)
-            Y0=Y0+n1
-            #print(solution2)
-    Liste2 = Liste2 + [solution1, solution2]
+            print(solution)
         
-#print(Liste)
->>>>>>> de9272efc01fa3716bcd78c4a2bed42209d42979
-#for i in range(len(Liste2)):
-#   print(Liste2[i][0],Liste2[i][1])
-
-ListeDesLong=[0]*longueur*largeur #C'est la liste contenant les distances parcourues dans chaques carrés
-for i in range(len(Liste2)-1):
-    for j in range(longueur):
-        for k in range(largeur):
-            xmil=(float(Liste2[i][0])+float(Liste2[i+1][0]))/2
-            ymil=(float(Liste2[i][1])+float(Liste2[i+1][1]))/2
-            if(xmil<(j+1)*n0 and xmil>j*n0 and ymil<(k+1)*n1 and ymil>k*n1):
-                ListeDesLong[k*longueur+j]+=float(sqrt((Liste2[i][0]-Liste2[i+1][0])**2+(Liste2[i][1]-Liste2[i+1][1])**2))
-CoefRepar=0
-TempsTot=0
-AireRec=n0*n1
-for i in range(len(ListeDesLong)):
-    TempsTot+=ListeDesLong[i]
-for i in range(len(ListeDesLong)):
-    CoefRepar+=abs(ListeDesLong[i]/TempsTot-AireRec)
-print(CoefRepar)
-
+print(Liste)    
 #repartition = fonc_repartition(Liste)
 #coefficient = float(repartition/rebond)
 #print ("coefficient de Repartition = ",coefficient)
